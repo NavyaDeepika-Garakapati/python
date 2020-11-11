@@ -1,8 +1,6 @@
 # import all required modules
 import json
 import sys
-##############################
-##############################
 
 # Functions required
 def check_syntax(myStr): 
@@ -74,8 +72,6 @@ def string_validation(string):
     else:
         return "Syntax invalid"
 
-###############################################
-###############################################
 
 # s = "(A=2 && B=3) || (C=4 && D=5)"
 # Run python script with string as an argument like
@@ -88,5 +84,3 @@ else:
     input_str = sys.argv[1]
     print(string_validation(input_str))
 	
-#############################################
-#############################################
