@@ -1,0 +1,60 @@
+# step-0:
+# Run the script 
+# python main.py 
+# empty list [] is resulted as we havenot inserted any data in the database yet
+
+# step-1:
+# used sqllite with flask_sqlalchemy orm
+# used 2 tables : employee and manager table
+# to access the tables first import the tables and db model from main script
+
+from main import db
+from main import Employee
+from main import Manager
+
+# step-2:
+# create the database by using above imported structure
+db.create_all()
+
+# step-3:
+# TO delete all rows in tables
+# at first it is better to delete all rows  if any details present 
+# inorder to avoid 
+# unique contraints behaviour while inserting the details
+
+Employee.query.delete()
+Manager.query.delete()
+db.session.commit()
+
+# step-4:
+# inserting data in the tables
+e1 = Employee(id = 1, emp_name='Navya')
+e2 = Employee(id = 2, emp_name='Deepika')
+e3 = Employee(id = 3, emp_name='vamsi')
+e4 = Employee(id = 4, emp_name='krishna')
+e5 = Employee(id = 5, emp_name='CEO')
+m1 = Manager(employee_id = 1, manager_name='Deepika')
+m2 = Manager(employee_id = 2, manager_name='vamsi')
+m3 = Manager(employee_id = 3, manager_name='krishna')
+m4 = Manager(employee_id = 4, manager_name='CEO')
+m5 = Manager(employee_id = 5, manager_name='No manager')
+
+# step-5:
+# adding and commiting the data inserted above
+db.session.add_all([e1, e2, e3, e4,e5])
+db.session.commit()
+db.session.add_all([m1, m2, m3, m4, m5])
+db.session.commit()
+
+# now we have created the sqlite database
+# Now refresh the url to view the result updated (or)
+# again execute the main.py script to retrieve the required details
+
+#Note:
+# 1.Query to select all rows from corresponding tables
+Employee.query.all()
+Manager.query.all()
+
+# 2.To remove session and drop all tables int he database
+db.session.remove()
+db.drop_all()
