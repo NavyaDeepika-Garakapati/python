@@ -27,11 +27,11 @@ db.create_all()
 @app.route('/',methods=['GET'])
 def show_all():
     if request.method == 'GET':
-		# querying the data from employee and manager tables using join
+	# querying the data from employee and manager tables using join
         data = (db.session.query(Employee.id,Employee.emp_name,Manager.manager_name).join(Manager)).all()
         result = []
 		
-		#Required format output
+	# Required format output
         for row in data:
             r={}
             r["emp_id"]=row[0]
@@ -39,7 +39,7 @@ def show_all():
             r["manager_name"]=row[2]
             result.append(r)
 			
-		# return jsonified result
+	# return jsonified result
         return jsonify(result)
 
 # Run the flask app
