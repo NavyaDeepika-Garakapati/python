@@ -1,6 +1,10 @@
+# import all required modules
 import json
 import sys
+##############################
+##############################
 
+# Functions required
 def check_syntax(myStr): 
     """function to check the string syntax of opening and closing parenthesis"""
     stack = [] 
@@ -70,13 +74,19 @@ def string_validation(string):
     else:
         return "Syntax invalid"
 
+###############################################
+###############################################
 
 # s = "(A=2 && B=3) || (C=4 && D=5)"
 # Run python script with string as an argument like
 # python string_validation.py "(A=2 && B=3) || (C=4 && D=5)"
+# main driver code
 if len(sys.argv) != 2:
     print("wrong parameters!! please provide one input string for validation")
     sys.exit(1)
 else:
     input_str = sys.argv[1]
     print(string_validation(input_str))
+	
+#############################################
+#############################################
